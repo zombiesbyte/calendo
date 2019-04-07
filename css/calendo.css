@@ -1,0 +1,99 @@
+
+.calendoContainer {
+    width: auto;
+    height: auto;
+}
+.calendo {
+    width: auto;
+    height: auto;
+    background-color:hsl(0, 0%, 96%);
+    display: block;
+}
+.calendo .dateSelector {
+    width: auto;
+    height: auto;
+    background-color:hsl(0, 0%, 96%);
+    display: none;
+}
+.calendo .monthSelector {
+    width: auto;
+    height: auto;
+    background-color:hsl(0, 0%, 96%);
+    display: none;
+    padding: 10px 0;
+}
+.calendo .yearSelector {
+    width: auto;
+    height: auto;
+    max-height: 300px;
+    overflow: auto;
+    background-color:hsl(0, 0%, 96%);
+    display: none;
+    padding: 10px 0;
+
+}
+.calendo .menu-do {
+    width: auto;
+    padding: 10px;
+    margin-bottom: 6px !important;
+    background-color:hsl(0, 0%, 86%);
+}
+.calendo .monthYearCalMenu p {
+    padding-top: 6px;
+}
+.calendo .monthYearCalMenu p span.monthSpan {
+    padding-right: 6px;
+    cursor: pointer;
+}
+.calendo .monthYearCalMenu p span.yearSpan {
+    font-weight: bold;
+    cursor: pointer;
+}
+.calendo .unit:first-child {
+    margin-left: 4px !important;
+}
+.calendo .unit {
+    margin: 2px !important;
+    border-radius: 3px;
+}
+.calendo .calDays .unit { 
+    background-color:hsl(0, 0%, 96%);
+}
+.calendo .dateRow .unit { 
+    background-color:hsl(0, 0%, 86%);
+}
+.calendo .unit:last-child {
+    margin-right: 4px !important;
+}
+.calendo .unit.disabled, .calendo .unit.disabled:hover {
+    cursor: not-allowed;
+    background-color:hsl(0, 0%, 96%);
+}
+.calendo .unit.selected {
+    background-color: hsl(141, 71%, 48%);
+}
+.calendo .unit.today {
+    background-color: hsl(48, 100%, 67%);
+}
+.calendo .unit.today:hover {
+    background-color: hsl(48, 50%, 43%);
+}
+.calendo .unit:hover {
+    cursor: pointer;
+    background-color: hsl(0, 0%, 71%);
+}
+.calendo .dayLetterRow {
+    margin: 2px !important;
+    margin-bottom: 6px !important;
+    font-weight: bold;
+    background-color:hsl(0, 0%, 96%);
+}
+.calendo .dayLetterRow .unit:hover {
+    cursor: text;
+    background-color: hsl(0, 0%, 96%);
+}
+.calendo .dateRow {
+    margin: 2px !important;
+    margin-bottom: 6px !important;
+    background-color:hsl(0, 0%, 96%);
+}
