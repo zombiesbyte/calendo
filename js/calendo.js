@@ -24,7 +24,7 @@ var Calendo = {
     thisDayStr: "",
     totalDaysThisMonth: 0,
 
-    init: function (options = {}) {
+    init: function (options) {
         Calendo.appOptions = Calendo.defineOptions(options);
         Calendo.selectedMonth1 = Calendo.selectedDateObj1.getMonth();
         Calendo.selectedMonth2 = Calendo.selectedDateObj1.getMonth();
@@ -126,11 +126,9 @@ var Calendo = {
         }
     },
     updateValues: function () {
-        console.log('selectedMonth1: ' + Calendo.selectedMonth1);
         Calendo.thisDateObj.setFullYear(Calendo.selectedYear1, Calendo.selectedMonth1, Calendo.selectedDay1);
         Calendo.thisYear = Calendo.thisDateObj.getFullYear();
         Calendo.thisMonthInt = Calendo.selectedMonth1; //Calendo.thisDateObj.getMonth();
-        console.log('selectedMonth1: ' + Calendo.thisMonthInt);
         Calendo.thisDateInt = Calendo.thisDateObj.getDate();
         Calendo.thisDayInt = Calendo.thisDateObj.getDay();
         Calendo.thisMonthStr = Calendo.intMonthToStrMonth(Calendo.thisMonthInt);
@@ -303,7 +301,7 @@ var Calendo = {
         $daysView = '<div class="daySelector">' + $daysView.prop('outerHTML') + days + '</div>';
         return $daysView;
     },
-    monthsView() {
+    monthsView: function () {
         var todaysDateObj = new Date();
         var todaysDate = todaysDateObj.getDate();
         var todaysMonth = todaysDateObj.getMonth();
@@ -331,7 +329,7 @@ var Calendo = {
         }
         return '<div class="monthSelector">' + months + '</div>';
     },
-    yearsView() {
+    yearsView: function () {
         var todaysDateObj = new Date();
         var todaysDate = todaysDateObj.getDate();
         var todaysMonth = todaysDateObj.getMonth();
@@ -357,7 +355,7 @@ var Calendo = {
         }
         return '<div class="yearSelector">' + years + '</div>';
     },
-    intDayToStrDay(intDay, modifier = 0) {
+    intDayToStrDay: function (intDay, modifier) {
         intDay = intDay + modifier;
         var strDay;
         switch (intDay) {
@@ -371,7 +369,7 @@ var Calendo = {
         }
         return strDay;
     },
-    intMonthToStrMonth(intMonth) {
+    intMonthToStrMonth: function (intMonth) {
         var strMonth;
         switch (intMonth) {
             case 0: strMonth = "January"; break;
@@ -416,7 +414,7 @@ var Calendo = {
         else if (Calendo.appOptions.dateFormatYear == 4) formattedDate = formattedDate.replace('yyyy', fYear);
         return formattedDate;
     },
-    padStart(str, strLen) {
+    padStart: function (str, strLen) {
         if (strLen == 2) {
             return ('00' + str).slice(-strLen);
         } else return str;
