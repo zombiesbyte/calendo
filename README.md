@@ -1,9 +1,9 @@
 # calendo
 A lightweight calendar with a "can do" attitude
 
-![example 1](https://github.com/zombiesbyte/calendo/docs/image1.jpg)
-![example 2](https://github.com/zombiesbyte/calendo/docs/image2.jpg)
-![example 3](https://github.com/zombiesbyte/calendo/docs/image3.jpg)
+![example 1](https://github.com/zombiesbyte/calendo/blob/master/docs/image1.jpg)
+![example 2](https://github.com/zombiesbyte/calendo/blob/master/docs/image2.jpg)
+![example 3](https://github.com/zombiesbyte/calendo/blob/master/docs/image3.jpg)
 
 
 ## Prerequisite
