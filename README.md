@@ -17,7 +17,8 @@ The Bulma CSS framework is light and flexible however if you're using Bootstrap 
 
 ## Usage
 *html*
-Include a `data-calendo="true"` on your input field. The field should really be set to just 'text' for it's `type`
+Include a `data-calendo="true"` on your input field. The field should really be set to just 'text' for it's `type`, don't forget to include
+`autocomplete="off"` as the calendar will fight with previous field input history provided by your browser. 
 ```
     <head>
         <!--dont forget these -->
@@ -29,7 +30,7 @@ Include a `data-calendo="true"` on your input field. The field should really be 
     
     ...
     
-    <input class="input" type="text" placeholder="Select a date" data-calendo="true" name="my_date" value="">
+    <input class="input" type="text" placeholder="Select a date" data-calendo="true" name="my_date" value="" autocomplete="off">
 
     ...
 
@@ -59,10 +60,28 @@ Include a `data-calendo="true"` on your input field. The field should really be 
 </script>
 ```
 
+## Releases/updates
+
+### ver 1.1
+- fixed multiple intances. Calendo now resets itself properly at each new instance.
+- fixed some CSS issues particularly the size of box issue which resulted in loss of focus
+- fixed issue with January selection setting the year incorrectly
+- fixed issue with EG and FF requiring day (01) to be set on Date object (Chrome didn't mind if this was missing)
+- removed dead variables
+- Cross browser testing (Chrome, FireFox, Edge) (Safari, Opera, IE untested)
+    - Chrome (Win10 64x) ver 73.0.3683.103
+    - FireFox (Win10 64x) ver 66.0.3
+    - Edge (Win10 64x) ver 44.17763.1.0
+
+### ver 1.0
+- initial release
+
+
+
 ## Disclaimer
 This is very much an untested calendar/date picker however in the coming weeks/months I hope to shorten or remove this disclaimer.
-- Several instances (untested)
-- X-Browser testing [Chrome only] (untested)
 - Other versions of jQuery greater than 3.3.1 (untested)
-
+- Browser testing incomplete
+    - Safari, Opera and IE untested
+    - Chrome, FireFox and Edge only tested on Windows 10 (x64)
 

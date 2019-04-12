@@ -1,4 +1,4 @@
-/*Calendo - James Dalgarno - V1.0 - MIT*/
+/*Calendo - James Dalgarno - V1.1 - MIT*/
 /*https://github.com/zombiesbyte/calendo*/
 
 var Calendo = {
@@ -36,12 +36,11 @@ var Calendo = {
         $('[data-calendo]').wrap('<div class="calendoContainer"></div>');
 
         $('[data-calendo]').on('click', function () {
-            if ($(this).parent().find('.calendo').length == 0) {
+            $(this).attr('autocomplete', 'off');
+
+            if ($('.calendo').length == 0) {
                 //we attach our plugin to our ground work
                 $inputE = $(this);
-
-                //this ~seems~ to have solved a bug where my Calendo obj goes missing
-                if (Calendo == undefined) $(this).parent().find('.calendo').remove();
 
                 Calendo.setValue($inputE.val());
                 $(this).parent().append(Calendo.attach());
@@ -56,10 +55,12 @@ var Calendo = {
                 $('[data-calendo-nav="left"]').on('click', function () {
                     Calendo.previousMonth();
                     Calendo.changeView('day');
+                    Calendo.dateClicker($inputE);
                 });
                 $('[data-calendo-nav="right"]').on('click', function () {
                     Calendo.nextMonth();
                     Calendo.changeView('day');
+                    Calendo.dateClicker($inputE);
                 });
 
                 Calendo.dateClicker($inputE); //I need to reattach these listeners after changing date each time
@@ -76,13 +77,43 @@ var Calendo = {
                 });
 
             } else {
-                $(this).parent().find('.calendo').remove();
+                $('.calendo').remove();
+                Calendo.reset();
             }
         });
 
         $('.calendoContainer').on('mouseleave', function () {
-            $(this).find('.calendo').remove();
+            $('.calendo').remove();
+            Calendo.reset();
         });
+    },
+    reset: function () {
+        $inputE = null;
+        Calendo.selectedDateObj1 = new Date();
+        Calendo.selectedDataObj2 = new Date();
+        Calendo.selectedDay1 = 0;
+        Calendo.selectedDay2 = 0;
+        Calendo.selectedMonth1 = 0;
+        Calendo.selectedMonth2 = 0;
+        Calendo.selectedYear1 = 0;
+        Calendo.selectedYear2 = 0;
+        Calendo.previousDay1 = 0;
+        Calendo.previousMonth1 = 0;
+        Calendo.previousYear1 = 0;
+        Calendo.thisDateObj = new Date();
+        Calendo.thisYear = 0;
+        Calendo.thisMonthInt = 0;
+        Calendo.thisDateInt = 0;
+        Calendo.thisDayInt = "";
+        Calendo.thisMonthStr = "";
+        Calendo.thisDayStr = "";
+        Calendo.totalDaysThisMonth = 0;
+
+        //Calendo.appOptions = Calendo.defineOptions(options);
+        Calendo.selectedMonth1 = Calendo.selectedDateObj1.getMonth();
+        Calendo.selectedMonth2 = Calendo.selectedDateObj1.getMonth();
+        Calendo.selectedYear1 = Calendo.selectedDateObj1.getFullYear();
+        Calendo.selectedYear2 = Calendo.selectedDateObj1.getFullYear();
     },
     dateClicker: function (inputElement) {
         $('[data-calendo-select]').on('click', function () {
@@ -127,7 +158,8 @@ var Calendo = {
     },
     updateValues: function () {
         Calendo.thisDateObj.setFullYear(Calendo.selectedYear1, Calendo.selectedMonth1, Calendo.selectedDay1);
-        Calendo.thisYear = Calendo.thisDateObj.getFullYear();
+        //Calendo.thisYear = Calendo.thisDateObj.getFullYear();
+        Calendo.thisYear = Calendo.selectedYear1
         Calendo.thisMonthInt = Calendo.selectedMonth1; //Calendo.thisDateObj.getMonth();
         Calendo.thisDateInt = Calendo.thisDateObj.getDate();
         Calendo.thisDayInt = Calendo.thisDateObj.getDay();
@@ -221,7 +253,7 @@ var Calendo = {
         if (viewName == 'day') {
             Calendo.updateValues();
             $('.daySelector').html(Calendo.daysView());
-            $('.daySelector').show(200);
+            $('.daySelector').show();
             $('.monthSelector').hide();
             $('.yearSelector').hide();
         }
@@ -231,9 +263,9 @@ var Calendo = {
             $('.yearSelector').hide();
         }
         else if (viewName == 'year') {
+            $('.yearSelector').show();
             $('.daySelector').hide();
             $('.monthSelector').hide();
-            $('.yearSelector').show();
         }
     },
     previousMonth: function () {
@@ -264,10 +296,8 @@ var Calendo = {
         };
         $daysView.append(daysOfTheWeekColumns);
         var totalDaysThisMonth = Calendo.daysInThisMonth(Calendo.thisDateObj.getFullYear(), Calendo.thisDateObj.getMonth());
-        var monthObj = new Date(Calendo.thisMonthStr + ' ' + Calendo.thisYear);
+        var monthObj = new Date('01 ' + Calendo.thisMonthStr + ' ' + Calendo.thisYear);
         var monthStartDayInt = monthObj.getDay();
-        var monthInt = monthObj.getMonth();
-        var yearInt = monthObj.getFullYear();
         var todaysDateObj = new Date();
         var todaysDate = todaysDateObj.getDate();
         var todaysMonth = todaysDateObj.getMonth();
@@ -275,6 +305,7 @@ var Calendo = {
         var dayNumber = 1;
         var countCols = 0;
         var days = "";
+
         for (var n = 0; n < 42; n++) {
             if (countCols == 0) {
                 days += '<div class="columns is-gapless dateRow">';
@@ -420,4 +451,3 @@ var Calendo = {
         } else return str;
     }
 }
-
