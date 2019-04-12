@@ -60,6 +60,24 @@ Include a `data-calendo="true"` on your input field. The field should really be 
 </script>
 ```
 
+*CSS*
+The default behavour is to force-drop the box which extends the page as it is a hard element. If you wish to have a traditional drop-down that floats over the top of existing page elements then you simply need to modify the following two classes in the CSS file and remove the comments
+```
+.calendoContainer {
+    width: auto;
+    height: auto;
+    /*position: relative;
+    z-index: 1000;*/
+}
+.calendo {
+    width: 300px;
+    height: auto;
+    background-color:hsl(0, 0%, 96%);
+    display: block;
+    /*position: absolute;*/
+}
+```
+
 ## Releases/updates
 
 ### ver 1.1

@@ -2,12 +2,15 @@
 .calendoContainer {
     width: auto;
     height: auto;
+    /*position: relative;
+    z-index: 1000;*/
 }
 .calendo {
-    width: auto;
+    width: 300px;
     height: auto;
     background-color:hsl(0, 0%, 96%);
     display: block;
+    /*position: absolute;*/
 }
 .calendo .daySelector {
     width: auto;
